@@ -1,7 +1,12 @@
 const { Schema, model } = require('mongoose')
 
 const todoSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: [true, 'Todo name is required'],
+    trim: true,
+    maxlength: [true, 'Todo cannot be more than 40 characters']
+  },
   isFavorite: Boolean,
   isChecked: Boolean
 })
