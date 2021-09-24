@@ -4,7 +4,7 @@ import User from 'models/User'
 
 connectDB()
 
-const userRouter = async (req, res) => {
+const usersRouter = async (req, res) => {
   requestLogger(req, res)
 
   const { method, body } = req
@@ -38,4 +38,4 @@ const userRouter = async (req, res) => {
   }
 }
 
-export default userRouter
+export default usersRouter
