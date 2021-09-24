@@ -14,17 +14,22 @@ const usersRouter = async (req, res) => {
       const users = await User.find({})
       res.status(200).json({ success: true, data: users })
     } catch (e) {
-      res.status(400).json({ success: false, error: e.name })
+      res.status(400).json({ success: false, error: e.message })
     }
   }
 
   const POST = async () => {
+    const { username, name } = body
+
     try {
-      const user = new User(body)
+      const user = new User({
+        username,
+        name
+      })
       const savedUser = await user.save()
       res.status(201).json({ success: true, data: savedUser })
     } catch (e) {
-      res.status(400).json({ success: false, error: e.name })
+      res.status(400).json({ success: false, error: e.message })
     }
   }
 

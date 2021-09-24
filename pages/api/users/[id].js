@@ -15,7 +15,7 @@ const userRouter = async (req, res) => {
       const user = await User.findById(id)
       res.status(200).json({ success: true, data: user })
     } catch (e) {
-      res.status(404).json({ success: false, error: e.name })
+      res.status(404).json({ success: false, error: 'User not found' })
     }
   }
 
@@ -24,7 +24,7 @@ const userRouter = async (req, res) => {
       await User.findByIdAndRemove(id)
       res.status(204).end()
     } catch (e) {
-      res.status(404).json({ success: false, error: e.name })
+      res.status(404).json({ success: false, error: 'User not found' })
     }
   }
 

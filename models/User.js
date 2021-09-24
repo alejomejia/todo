@@ -1,11 +1,13 @@
-const { Schema, model, models } = require('mongoose')
-const uniqueValidator = require('mongoose-unique-validator')
+import { Schema, model, models } from 'mongoose'
+import uniqueValidator from 'mongoose-unique-validator'
 
 const UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    minlength: [4, 'Username cannot be less than 4 characters'],
+    maxlength: [16, 'Username cannot be more than 16 characters']
   },
   name: String,
   passwordHash: String,
@@ -30,4 +32,4 @@ UserSchema.set('toJSON', {
 
 const User = models.User || model('User', UserSchema)
 
-module.exports = User
+export default User

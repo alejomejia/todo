@@ -1,12 +1,12 @@
-const mongoose = require('mongoose')
-const { BE_MONGODB_URI } = require('./variables')
+import { connect } from 'mongoose'
+import { BE_MONGODB_URI } from './variables'
 
 const connectDB = async () => {
-  await mongoose.connect(BE_MONGODB_URI, {
+  await connect(BE_MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
   console.log('### Connected to MongoDB')
 }
 
-module.exports = connectDB
+export default connectDB

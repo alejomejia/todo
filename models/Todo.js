@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose')
+import { Schema, model } from 'mongoose'
 
 const todoSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Todo name is required'],
     trim: true,
-    maxlength: [true, 'Todo cannot be more than 40 characters']
+    maxlength: [40, 'Todo cannot be more than 40 characters']
   },
   isFavorite: Boolean,
   isChecked: Boolean
@@ -21,4 +21,4 @@ todoSchema.set('toJSON', {
 
 const Todo = model('Todo', todoSchema)
 
-module.exports = Todo
+export default Todo
