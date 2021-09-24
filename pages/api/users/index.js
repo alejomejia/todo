@@ -1,9 +1,12 @@
 import connectDB from 'utils/be/connect-db'
+import { requestLogger } from 'utils/be/middlewares'
 import User from 'models/User'
 
 connectDB()
 
 const userRouter = async (req, res) => {
+  requestLogger(req, res)
+
   const { method, body } = req
 
   const GET = async () => {
