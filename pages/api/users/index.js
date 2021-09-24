@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt'
+
 import connectDB from 'utils/be/connect-db'
 import { requestLogger } from 'utils/be/middlewares'
 import User from 'models/User'
@@ -19,13 +21,18 @@ const usersRouter = async (req, res) => {
   }
 
   const POST = async () => {
-    const { username, name } = body
+    const { username, name, password } = body
 
     try {
+      const saltRounds = 10
+      const passwordHash = await bcrypt.hash(password, saltRounds)
+
       const user = new User({
         username,
-        name
+        name,
+        passwordHash
       })
+
       const savedUser = await user.save()
       res.status(201).json({ success: true, data: savedUser })
     } catch (e) {
