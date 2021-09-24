@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "jest --verbose --runInBand",
+    "test:watch": "jest --verbose --runInBand --watch",
     "lint": "next lint",
     "cm": "git-cz"
   },
   "dependencies": {
     "@mui/material": "^5.0.1",
     "@mui/styled-engine-sc": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.7",
@@ -22,10 +25,23 @@
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
+    "babel-jest": "^27.2.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "git-cz": "^4.7.6",
     "jest": "^27.2.1",
     "prop-types": "^15.7.2"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>"
+    ],
+    "modulePaths": [
+      "<rootDir>",
+      "/home/some/other/path"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
   }
 }
