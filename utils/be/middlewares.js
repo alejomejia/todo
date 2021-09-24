@@ -6,6 +6,4 @@ const requestLogger = (req, res) => {
   console.info('---')
 }
 
-module.exports = {
-  requestLogger
-}
+export { requestLogger }
